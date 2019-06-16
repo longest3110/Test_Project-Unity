@@ -11,20 +11,20 @@ public class NodeGenerator : MonoBehaviour {
 	RowNode rowNode;
 
 	private void Start() {
-		DataTable data = dbManager.GetTable();
+		List<List<string>> data = dbManager.GetTable();
 
 		// カラム名の追加
 		RowNode columnRow = Instantiate(rowNode, rowNode.transform.parent);
-		foreach(string column in data.Columns) {
+		foreach(string column in dbManager.GetColumnName()) {
 			columnRow.AddColumnNode(column);
 		}
 		columnRow.gameObject.SetActive(true);
 
 
-		foreach(DataRow row in data.Rows) {
+		foreach(List<string> row in data) {
 			RowNode newRow = Instantiate(rowNode, rowNode.transform.parent);
-			foreach(string column in data.Columns) {
-				newRow.AddColumnNode(row[column].ToString());
+			foreach(string column in row) {
+				newRow.AddColumnNode(column);
 			}
 			newRow.gameObject.SetActive(true);
 		}
