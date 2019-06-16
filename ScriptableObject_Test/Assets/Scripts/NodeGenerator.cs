@@ -11,7 +11,7 @@ public class NodeGenerator : MonoBehaviour {
 	RowNode rowNode;
 
 	private void Start() {
-		List<List<string>> data = dbManager.GetTable();
+		List<Dictionary<string, object>> data = dbManager.GetTable();
 
 		// カラム名の追加
 		RowNode columnRow = Instantiate(rowNode, rowNode.transform.parent);
@@ -20,11 +20,10 @@ public class NodeGenerator : MonoBehaviour {
 		}
 		columnRow.gameObject.SetActive(true);
 
-
-		foreach(List<string> row in data) {
+		foreach(Dictionary<string, object> row in data) {
 			RowNode newRow = Instantiate(rowNode, rowNode.transform.parent);
-			foreach(string column in row) {
-				newRow.AddColumnNode(column);
+			foreach(string column in dbManager.GetColumnName()) {
+				newRow.AddColumnNode(row[column].ToString());
 			}
 			newRow.gameObject.SetActive(true);
 		}

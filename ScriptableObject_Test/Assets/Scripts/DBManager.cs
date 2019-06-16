@@ -9,14 +9,14 @@ public class DBManager : MonoBehaviour {
 		sqlDB = new SqliteDatabase("newKanjiMaster.db");
 	}
 
-	public List<List<string>> GetTable() {
-		List<List<string>> output = new List<List<string>>(); 
+	public List<Dictionary<string, object>> GetTable() {
+		List<Dictionary<string, object>> output = new List<Dictionary<string, object>>(); 
 		DataTable data = sqlDB.ExecuteQuery("select * from idioms_master limit 100");
 
 		foreach (DataRow row in data.Rows) {
-			List<string> temp = new List<string>();
+			Dictionary<string, object> temp = new Dictionary<string, object>();
 			foreach(string column in data.Columns) {
-				temp.Add(row[column].ToString());
+				temp.Add(column, row[column]);
 			}
 			output.Add(temp);
 		}
