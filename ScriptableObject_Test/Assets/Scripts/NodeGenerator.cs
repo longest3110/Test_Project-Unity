@@ -21,13 +21,12 @@ public class NodeGenerator : MonoBehaviour {
 		columnRow.gameObject.SetActive(true);
 
 
-		// foreach(DataRow row in data.Rows) {
-		// 	string s = "";
-		// 	foreach(string column in data.Columns) {
-		// 		s += (row[column].ToString() + ", ");
-		// 	}
-
-		// 	Debug.Log(s);
-		// }
+		foreach(DataRow row in data.Rows) {
+			RowNode newRow = Instantiate(rowNode, rowNode.transform.parent);
+			foreach(string column in data.Columns) {
+				newRow.AddColumnNode(row[column].ToString());
+			}
+			newRow.gameObject.SetActive(true);
+		}
 	}
 }

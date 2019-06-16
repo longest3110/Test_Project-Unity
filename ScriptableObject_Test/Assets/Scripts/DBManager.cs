@@ -10,6 +10,6 @@ public class DBManager : MonoBehaviour {
 	}
 
 	public DataTable GetTable() {
-		return sqlDB.ExecuteQuery("select * from idioms_master");
+		return sqlDB.ExecuteQuery("select * from idioms_master limit 100");
 	}
 }
