@@ -27,4 +27,8 @@ public class DBManager : MonoBehaviour {
 	public List<string> GetColumnName() {
 		return sqlDB.ExecuteQuery("select * from idioms_master limit 1").Columns;
 	}
+
+	public DataTable GetData() {
+		return sqlDB.ExecuteQuery("select * from idioms_master");
+	}
 }
