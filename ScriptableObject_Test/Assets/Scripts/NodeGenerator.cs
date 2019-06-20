@@ -8,10 +8,13 @@ public class NodeGenerator : MonoBehaviour {
 	DBManager dbManager;
 
 	[SerializeField]
+	ScriptableObjectManager scriptableObjectManager;
+
+	[SerializeField]
 	RowNode rowNode;
 
 	private void Start() {
-		List<Dictionary<string, object>> data = dbManager.GetTable();
+		List<Dictionary<string, object>> data = scriptableObjectManager.GetTable();
 
 		// カラム名の追加
 		RowNode columnRow = Instantiate(rowNode, rowNode.transform.parent);

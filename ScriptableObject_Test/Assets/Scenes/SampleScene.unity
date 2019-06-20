@@ -815,6 +815,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dbManager: {fileID: 1865044682}
+  scriptableObjectManager: {fileID: 1820461172}
   rowNode: {fileID: 775011712}
 --- !u!4 &1302855940
 Transform:
