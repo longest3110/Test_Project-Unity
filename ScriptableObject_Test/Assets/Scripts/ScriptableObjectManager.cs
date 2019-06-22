@@ -5,7 +5,7 @@ using UnityEngine;
 public class ScriptableObjectManager : MonoBehaviour {
 	idioms_master idioms_master;
 
-	private void Start() {
+	private void Awake() {
 		idioms_master = Resources.Load<idioms_master>("idioms_master");
 	}
 
