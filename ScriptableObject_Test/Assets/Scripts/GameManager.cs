@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour {
 
 	[ContextMenu("Generate")]
 	public void GenerateScriptableObject() {
-		idioms_master new_idioms_master = new idioms_master();
+		idioms_master new_idioms_master = ScriptableObject.CreateInstance<idioms_master>();
 		new_idioms_master.Data = new List<idioms_master.idioms_master_data>();
 
 		foreach(DataRow row in dbManager.GetData().Rows) {
